@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Marcação</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #d0d0d0, #1565c0);
+            font-family: Arial, sans-serif;
+            position: relative;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .borda-superior {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .logo {
+            max-width: 70px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .appointment-btn {
+            background: #3fbbc0;
+            color: #fff;
+            border-radius: 4px;
+            padding: 10px;
+            white-space: nowrap;
+            transition: 0.3s;
+            font-size: 14px;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .appointment-btn:hover {
+            background: #65c9cd;
+        }
+    </style>
+    <script>
+        function preencherEspecialista() {
+            var escolha = document.getElementById("servico").value;
+            var especialistaInput = document.getElementById("especialista");
+
+            switch (escolha) {
+                case "Limpeza Oral":
+                    especialistaInput.value = "Sara Soares";
+                    break;
+                case "Raspagem dentária":
+                    especialistaInput.value = "Pedro Magalhães";
+                    break;
+                case "Aparelho dentário":
+                    especialistaInput.value = "Rodrigo Ronaldo";
+                    break;
+                case "Branqueamento":
+                    especialistaInput.value = "Maria Eduarda";
+                    break;
+                default:
+                    especialistaInput.value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="borda-superior">
+        <img src="assets/img/apple-touch-icon.png" alt="logotipo" class="logo">
+    </div>
+    <div class="container">
+        <form method="post" action="confirmacao.php">
+            <div class="form-group">
+                <label for="nome">Nome </label>
+                <input type="text" name="nome">
+            </div>
+
+            <div class="form-group">
+                <label for="servico">Serviço </label>
+                <select name="servico" id="servico" onchange="preencherEspecialista()">
+                    <option value="nehum">  </option>
+                    <option value="Limpeza Oral">Limpeza Oral</option>
+                    <option value="Raspagem dentária">Raspagem dentária</option>
+                    <option value="Aparelho dentário">Aparelho dentário</option>
+                    <option value="Branqueamento">Branqueamento</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="especialista">Especialista </label>
+                <input type="text" name="especialista" id="especialista" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="horas">Horário</label>
+                <input type="datetime-local" name="horas" id="horas">
+            </div>
+
+            <div>
+                <button type="submit" class="appointment-btn">Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
